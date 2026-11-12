@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: Gateway Pagar.me para WooCommerce
- * Plugin URI: https://github.com/seu-usuario/pagarme-woocommerce-gateway
+ * Plugin URI: https://github.com/SuedesCarletti/pagarme-woocommerce-gateway
  * Description: Gateway Pagar.me com todos os métodos de pagamento, multipagamentos e antifraude
  * Version: 2.0.0
  * Author: Suedes Carletti
- * E-mail: pessoa3@example.com
+ * E-mail: suedes.carletti.tp@gmail.com
  * Requires at least: 5.0
  * Tested up to: 6.4
  * WC requires at least: 4.0
