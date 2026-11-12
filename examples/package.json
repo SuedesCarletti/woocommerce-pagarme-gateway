@@ -1,0 +1,52 @@
+{
+  "name": "woocommerce-sankhya-integration",
+  "version": "1.0.0",
+  "description": "Integração WooCommerce + Pagar.me + Sankhya via Railway",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "jest",
+    "sync": "node src/sync.js",
+    "sync:date": "node src/sync-date.js",
+    "status": "node src/status.js",
+    "health": "node src/health-check.js"
+  },
+  "keywords": [
+    "woocommerce",
+    "pagarme", 
+    "sankhya",
+    "erp",
+    "integration",
+    "railway"
+  ],
+  "author": "Sua Empresa",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.0",
+    "node-cron": "^3.0.2",
+    "winston": "^3.11.0",
+    "express": "^4.18.0",
+    "helmet": "^7.1.0",
+    "cors": "^2.8.5",
+    "body-parser": "^1.20.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0",
+    "jest": "^29.7.0",
+    "@types/node": "^20.8.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sua-empresa/woocommerce-sankhya-integration.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sua-empresa/woocommerce-sankhya-integration/issues"
+  },
+  "homepage": "https://github.com/sua-empresa/woocommerce-sankhya-integration#readme"
+}

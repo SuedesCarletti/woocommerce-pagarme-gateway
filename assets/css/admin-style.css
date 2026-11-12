@@ -1,0 +1,1417 @@
+/**
+ * Estilos do Checkout Atualizado - Gateway de Pagamentos
+ */
+
+/* ===== MÉTODOS DE PAGAMENTO ===== */
+.pagarme-payment-methods {
+    margin-bottom: 20px;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e1e1e1;
+}
+
+.payment-method-option {
+    border: 2px solid #e1e1e1;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    background: #fff;
+}
+
+.payment-method-option:hover {
+    border-color: #0073aa;
+    box-shadow: 0 2px 8px rgba(0, 115, 170, 0.1);
+}
+
+.payment-method-option.selected {
+    border-color: #0073aa;
+    background: #f0f8ff;
+    box-shadow: 0 0 0 1px rgba(0, 115, 170, 0.2);
+}
+
+.payment-method-option input[type="radio"] {
+    display: none;
+}
+
+.payment-method-label {
+    display: flex;
+    align-items: center;
+    padding: 18px 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.payment-method-label:hover {
+    background: rgba(0, 115, 170, 0.02);
+}
+
+.payment-method-option.selected .payment-method-label {
+    background: rgba(0, 115, 170, 0.05);
+}
+
+.payment-icon {
+    font-size: 28px;
+    margin-right: 16px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e1e1e1;
+}
+
+.payment-method-option.selected .payment-icon {
+    background: #0073aa;
+    color: white;
+    border-color: #0073aa;
+}
+
+.payment-info {
+    flex: 1;
+}
+
+.payment-info strong {
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    color: #23282d;
+    margin-bottom: 4px;
+}
+
+.payment-info small {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.payment-method-option.selected .payment-info strong {
+    color: #0073aa;
+}
+
+/* Radio button customizado */
+.payment-method-label::after {
+    content: '';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    background: #fff;
+    transition: all 0.2s ease;
+}
+
+.payment-method-option.selected .payment-method-label::after {
+    border-color: #0073aa;
+    background: #0073aa;
+    box-shadow: inset 0 0 0 4px #fff;
+}
+
+/* ===== CAMPOS DE PAGAMENTO ===== */
+.payment-fields {
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    padding: 25px;
+    margin-top: 20px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.payment-fields h4 {
+    margin: 0 0 20px 0;
+    color: #23282d;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* ===== CAMPOS PIX ===== */
+.pix-info {
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.pix-info p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.pix-info .discount-info {
+    background: #e7f3ff;
+    border: 1px solid #b3d9ff;
+    border-radius: 6px;
+    padding: 15px;
+    color: #0073aa;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+/* ===== CAMPOS BOLETO ===== */
+.boleto-info {
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.boleto-info p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.boleto-info .discount-info {
+    background: #e8f5e8;
+    border: 1px solid #c3e6c3;
+    border-radius: 6px;
+    padding: 15px;
+    color: #2e7d32;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+/* ===== CAMPOS CARTÃO DE CRÉDITO ===== */
+.form-row {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-row label {
+    display: block;
+    font-weight: 600;
+    color: #23282d;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.form-row .required {
+    color: #d63638;
+}
+
+.form-row input,
+.form-row select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    line-height: 1.4;
+    transition: all 0.2s ease;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.form-row input:focus,
+.form-row select:focus {
+    outline: none;
+    border-color: #0073aa;
+    box-shadow: 0 0 0 3px rgba(0, 115, 170, 0.1);
+}
+
+.form-row input::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+/* Layout responsivo dos campos */
+.form-row-first,
+.form-row-last {
+    width: 48%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.form-row-first {
+    margin-right: 4%;
+}
+
+.form-row-wide {
+    width: 100%;
+}
+
+/* ===== DETECÇÃO DE BANDEIRA DO CARTÃO ===== */
+.card-brand-display {
+    margin-top: 10px;
+    min-height: 35px;
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    background: #f8f9fa;
+    border: 1px solid #e1e1e1;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #666;
+    transition: all 0.2s ease;
+}
+
+.card-brand-display.active {
+    background: #e7f3ff;
+    border-color: #0073aa;
+    color: #0073aa;
+}
+
+.brand-logo {
+    margin-right: 8px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.brand-name {
+    font-weight: 600;
+}
+
+/* ===== VALIDAÇÃO DE CAMPOS ===== */
+.validation-icon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-top: 12px; /* Ajuste para compensar o label */
+    z-index: 5;
+}
+
+.woocommerce-validated input {
+    border-color: #00a32a !important;
+    background-color: #f7fcf7;
+}
+
+.woocommerce-invalid input {
+    border-color: #d63638 !important;
+    background-color: #fdf2f2;
+}
+
+.field-error {
+    display: block;
+    color: #d63638;
+    font-size: 12px;
+    margin-top: 6px;
+    font-weight: 500;
+}
+
+/* ===== PARCELAS COM PREVIEW ===== */
+#pagarme-installments {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'><path fill='%23666' d='M2 0L0 2h4zm0 5L0 3h4z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 12px;
+    padding-right: 40px;
+}
+
+#pagarme-installments option {
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* ===== INDICADORES DE DESCONTO/JUROS ===== */
+.discount-info {
+    background: #e8f5e8;
+    border: 1px solid #c3e6c3;
+    border-radius: 6px;
+    padding: 12px 16px;
+    color: #2e7d32;
+    font-weight: 600;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.discount-info::before {
+    content: "✓";
+    margin-right: 8px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.interest-info {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 6px;
+    padding: 12px 16px;
+    color: #856404;
+    font-weight: 600;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.interest-info::before {
+    content: "⚠";
+    margin-right: 8px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* ===== CLEAR FLOATS ===== */
+.clear::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* ===== ANIMAÇÕES ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.payment-fields {
+    animation: fadeIn 0.3s ease;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+    .pagarme-payment-methods {
+        padding: 12px;
+    }
+    
+    .payment-method-label {
+        padding: 15px;
+    }
+    
+    .payment-icon {
+        font-size: 24px;
+        width: 45px;
+        height: 45px;
+        margin-right: 12px;
+    }
+    
+    .payment-info strong {
+        font-size: 16px;
+    }
+    
+    .payment-info small {
+        font-size: 13px;
+    }
+    
+    .payment-fields {
+        padding: 20px 15px;
+    }
+    
+    .form-row-first,
+    .form-row-last {
+        width: 100%;
+        display: block;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    
+    .form-row input,
+    .form-row select {
+        font-size: 16px; /* Evita zoom no iOS */
+        padding: 12px 14px;
+    }
+    
+    .card-brand-display {
+        margin-top: 8px;
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+    
+    .validation-icon {
+        right: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .payment-method-label {
+        padding: 12px;
+    }
+    
+    .payment-icon {
+        font-size: 20px;
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+    }
+    
+    .payment-info strong {
+        font-size: 15px;
+    }
+    
+    .payment-info small {
+        font-size: 12px;
+    }
+    
+    .payment-fields {
+        padding: 15px 12px;
+    }
+    
+    .form-row input,
+    .form-row select {
+        padding: 10px 12px;
+    }
+}
+
+/* ===== MELHORIAS DE ACESSIBILIDADE ===== */
+.payment-method-option:focus-within {
+    outline: 2px solid #0073aa;
+    outline-offset: 2px;
+}
+
+.form-row input:focus,
+.form-row select:focus {
+    outline: 2px solid #0073aa;
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .payment-method-option {
+        border-width: 3px;
+    }
+    
+    .payment-method-option.selected {
+        border-width: 4px;
+    }
+    
+    .form-row input,
+    .form-row select {
+        border-width: 3px;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .payment-method-option,
+    .payment-method-label,
+    .form-row input,
+    .form-row select,
+    .payment-fields {
+        transition: none;
+    }
+    
+    .payment-fields {
+        animation: none;
+    }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+    .pagarme-payment-methods,
+    .payment-fields {
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+    
+    .payment-method-option.selected {
+        background: #f0f0f0;
+    }
+}
+
+/* ===== VALIDAÇÃO DE CAMPOS DE PAGAMENTO ===== */
+
+/* Campos inválidos */
+.woocommerce-invalid input,
+.woocommerce-invalid select {
+    border-color: #dc3232 !important;
+    background-color: #fef2f2 !important;
+    box-shadow: 0 0 0 1px rgba(220, 50, 50, 0.1) !important;
+}
+
+/* Campos válidos */
+.woocommerce-validated input,
+.woocommerce-validated select {
+    border-color: #46b450 !important;
+    background-color: #f7fcf7 !important;
+    box-shadow: 0 0 0 1px rgba(70, 180, 80, 0.1) !important;
+}
+
+/* Mensagens de erro dos campos */
+.field-error {
+    display: block;
+    color: #dc3232;
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 6px;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Ícones de validação */
+.validation-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-top: 14px; /* Ajuste para compensar label */
+    font-size: 16px;
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* Avisos de validação */
+.pagarme-validation-notice {
+    background: #fef2f2;
+    border-left: 4px solid #dc3232;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    animation: slideDown 0.3s ease;
+}
+
+.pagarme-validation-notice strong {
+    color: #dc3232;
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+        padding: 0;
+    }
+    to {
+        opacity: 1;
+        max-height: 200px;
+        padding: 16px 20px;
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .validation-icon {
+        right: 10px;
+        font-size: 14px;
+    }
+    
+    .pagarme-validation-notice {
+        padding: 12px 16px;
+    }
+}
+
+/**
+ * CSS para garantir que Boleto/PIX sejam clicáveis
+ * Adicione ao final do arquivo: assets/css/admin-style.css
+ */
+
+/* ===== CORREÇÃO: Radio buttons clicáveis ===== */
+
+/* Garantir que payment-method-option seja clicável */
+.payment-method-option {
+    cursor: pointer !important;
+    position: relative;
+    z-index: 1;
+}
+
+/* Radio button deve estar acessível */
+.payment-method-option input[type="radio"] {
+    position: absolute !important;
+    opacity: 0 !important;
+    width: 20px !important;
+    height: 20px !important;
+    cursor: pointer !important;
+    z-index: 10 !important;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Label deve ser totalmente clicável */
+.payment-method-label {
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+    position: relative;
+    z-index: 5;
+}
+
+/* Garantir que todos os elementos dentro sejam clicáveis */
+.payment-method-label * {
+    cursor: pointer !important;
+    pointer-events: all !important;
+}
+
+/* Visual quando selecionado */
+.payment-method-option input[type="radio"]:checked + .payment-method-label {
+    background-color: #f0f8ff !important;
+}
+
+.payment-method-option:has(input:checked) {
+    border-color: #0073aa !important;
+    background-color: #f0f8ff !important;
+}
+
+/* Hover effect */
+.payment-method-option:hover {
+    border-color: #0073aa !important;
+    background-color: #f9fafb !important;
+}
+
+/* ===== CAMPOS DE PAGAMENTO ===== */
+
+/* Esconder campos não selecionados */
+#card-fields,
+#pix-fields,
+#boleto-fields {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Mostrar apenas o selecionado */
+#card-fields.active,
+#pix-fields.active,
+#boleto-fields.active {
+    display: block !important;
+}
+
+/* Animação suave */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== DEBUG: Remover se os campos estiverem funcionando ===== */
+
+/* Se ainda não funcionar, adicione temporariamente: */
+.payment-method-option input[type="radio"] {
+    /* Tornar visível para debug */
+    /* opacity: 1 !important; */
+    /* position: relative !important; */
+}
+
+/* ===== RESPONSIVIDADE ===== */
+
+@media (max-width: 768px) {
+    .payment-method-option input[type="radio"] {
+        left: 15px;
+    }
+    
+    .payment-method-label {
+        padding: 12px 15px !important;
+    }
+}
+
+/**
+ * CSS COMPLETO - Persistência + Step 4
+ * 
+ * ADICIONE ao final de: assets/css/admin-style.css
+ * OU crie um novo arquivo: assets/css/payment-step.css
+ */
+
+/* ============================================
+   STEP 3: CAMPOS DE PAGAMENTO
+   ============================================ */
+
+/* Garantir que campos expandem automaticamente */
+#card-fields,
+#pix-fields,
+#boleto-fields {
+    display: none;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+#card-fields.active,
+#pix-fields.active,
+#boleto-fields.active {
+    display: block !important;
+    opacity: 1 !important;
+    max-height: 2000px !important;
+    overflow: visible !important;
+    animation: expandFields 0.3s ease forwards;
+}
+
+@keyframes expandFields {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Método de pagamento selecionado */
+.payment-method-option.selected {
+    border-color: #0073aa !important;
+    background-color: #f0f8ff !important;
+    box-shadow: 0 0 0 1px rgba(0, 115, 170, 0.2) !important;
+}
+
+.payment-method-option input[type="radio"]:checked + .payment-method-label {
+    background-color: rgba(0, 115, 170, 0.05) !important;
+}
+
+/* ============================================
+   STEP 4: RESUMO DE PAGAMENTO
+   ============================================ */
+
+/* Seção de informações de pagamento no Step 4 */
+.msc-payment-info {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.msc-review-section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #374151;
+    margin: 0 0 16px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Item do resumo de pagamento */
+.payment-summary-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+    background: #f9fafb;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.payment-summary-item .payment-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.payment-summary-item .payment-details {
+    flex: 1;
+}
+
+.payment-summary-item strong {
+    display: block;
+    font-size: 16px;
+    color: #1f2937;
+    margin-bottom: 8px;
+}
+
+.payment-summary-item p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.5;
+}
+
+.payment-summary-item .payment-installments {
+    color: #0073aa;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+.payment-summary-item .payment-note {
+    font-size: 13px;
+    font-style: italic;
+    color: #9ca3af;
+    margin-top: 8px;
+}
+
+/* Resumo de frete no Step 4 */
+.msc-shipping-info {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.shipping-summary-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+    background: #f9fafb;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.shipping-summary-item .shipping-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.shipping-summary-item .shipping-details {
+    flex: 1;
+}
+
+.shipping-summary-item strong {
+    display: block;
+    font-size: 16px;
+    color: #1f2937;
+    margin-bottom: 4px;
+}
+
+.shipping-summary-item .shipping-time {
+    color: #059669;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.shipping-summary-item .shipping-cost {
+    color: #0073aa;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 4px;
+}
+
+/* ============================================
+   AVISOS E VALIDAÇÃO
+   ============================================ */
+
+.pagarme-validation-notice {
+    background: #fef2f2;
+    border-left: 4px solid #dc3232;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    animation: slideDown 0.3s ease;
+}
+
+.pagarme-validation-notice strong {
+    color: #dc3232;
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+.woocommerce-invalid input,
+.woocommerce-invalid select {
+    border-color: #dc3232 !important;
+    background-color: #fef2f2 !important;
+}
+
+.woocommerce-validated input,
+.woocommerce-validated select {
+    border-color: #46b450 !important;
+    background-color: #f7fcf7 !important;
+}
+
+.field-error {
+    display: block;
+    color: #dc3232;
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 6px;
+}
+
+/* ============================================
+   PLACEHOLDER COM HINT DE CARTÃO
+   ============================================ */
+
+#pagarme-card-number::placeholder {
+    color: #9ca3af;
+    font-style: italic;
+}
+
+#pagarme-card-number[placeholder*="●"] {
+    font-family: monospace;
+}
+
+/* ============================================
+   ANIMAÇÕES
+   ============================================ */
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    to {
+        opacity: 1;
+        max-height: 200px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   RESPONSIVIDADE
+   ============================================ */
+
+@media (max-width: 768px) {
+    .msc-payment-info,
+    .msc-shipping-info {
+        padding: 16px;
+        margin-bottom: 16px;
+    }
+    
+    .payment-summary-item,
+    .shipping-summary-item {
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px;
+    }
+    
+    .payment-summary-item .payment-icon,
+    .shipping-summary-item .shipping-icon {
+        font-size: 28px;
+    }
+    
+    .msc-review-section-title {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .msc-payment-info,
+    .msc-shipping-info {
+        padding: 12px;
+        border-radius: 8px;
+    }
+    
+    .payment-summary-item,
+    .shipping-summary-item {
+        padding: 10px;
+    }
+}
+
+/* ============================================
+   DEBUG: Adicionar temporariamente se precisar
+   ============================================ */
+
+/* Mostrar borders para debug */
+/*
+#card-fields.active {
+    border: 2px solid red !important;
+}
+
+#pix-fields.active {
+    border: 2px solid blue !important;
+}
+
+#boleto-fields.active {
+    border: 2px solid green !important;
+}
+*/
+
+/**
+ * CSS para Bandeiras de Cartão e Toggle CPF/CNPJ
+ * 
+ * ADICIONE ao final de: assets/css/admin-style.css
+ */
+
+/* ============================================
+   DISPLAY DE BANDEIRA DO CARTÃO
+   ============================================ */
+
+#card-brand-display {
+    display: none;
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: #f8f9fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+}
+
+#card-brand-display.active {
+    display: flex !important;
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border-color: #3b82f6;
+    animation: brandFadeIn 0.3s ease;
+}
+
+#card-brand-display .brand-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 32px;
+    background: white;
+    border-radius: 6px;
+    padding: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#card-brand-display .brand-icon svg {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 4px;
+}
+
+#card-brand-display .brand-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1e40af;
+}
+
+#card-brand-display .brand-detecting {
+    font-size: 13px;
+    color: #6b7280;
+    font-style: italic;
+}
+
+@keyframes brandFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   TOGGLE CPF/CNPJ
+   ============================================ */
+
+#document-type-toggle {
+    display: inline-flex;
+    gap: 12px;
+    margin-left: 12px;
+    padding: 4px 12px;
+    background: #f3f4f6;
+    border-radius: 20px;
+    align-items: center;
+}
+
+#document-type-toggle label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    color: #6b7280;
+    cursor: pointer;
+    margin: 0 !important;
+    padding: 4px 8px;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+#document-type-toggle label:hover {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+#document-type-toggle input[type="radio"] {
+    width: 14px !important;
+    height: 14px !important;
+    margin: 0 !important;
+    cursor: pointer;
+    position: relative !important;
+    opacity: 1 !important;
+    z-index: 1 !important;
+    left: 0 !important;
+    top: 0 !important;
+    transform: none !important;
+}
+
+#document-type-toggle input[type="radio"]:checked + span {
+    color: #0073aa;
+    font-weight: 600;
+}
+
+#document-type-toggle label:has(input:checked) {
+    background: #dbeafe;
+    color: #0073aa;
+}
+
+/* ============================================
+   CAMPOS EXPANDIDOS (MELHORADO)
+   ============================================ */
+
+#card-fields,
+#pix-fields,
+#boleto-fields {
+    display: none !important;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#card-fields.active,
+#pix-fields.active,
+#boleto-fields.active {
+    display: block !important;
+    opacity: 1 !important;
+    max-height: 3000px !important;
+    overflow: visible !important;
+    animation: smoothExpand 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes smoothExpand {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ============================================
+   VALIDAÇÃO COM ÍCONES
+   ============================================ */
+
+.woocommerce-validated input {
+    border-color: #10b981 !important;
+    background: #f0fdf4 !important;
+}
+
+.woocommerce-validated::after {
+    content: '✓';
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #10b981;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.woocommerce-invalid input {
+    border-color: #ef4444 !important;
+    background: #fef2f2 !important;
+}
+
+.woocommerce-invalid::after {
+    content: '✕';
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ef4444;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.form-row {
+    position: relative;
+    margin-bottom: 18px;
+}
+
+/* ============================================
+   STEP 4: RESUMO COM BANDEIRA
+   ============================================ */
+
+.msc-payment-info .payment-icon svg {
+    max-width: 50px;
+    max-height: 32px;
+    border-radius: 4px;
+}
+
+.payment-summary-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 20px;
+    background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.payment-summary-item .payment-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 40px;
+    background: white;
+    border-radius: 8px;
+    padding: 6px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.payment-summary-item .payment-details {
+    flex: 1;
+}
+
+.payment-summary-item strong {
+    display: block;
+    font-size: 18px;
+    color: #1f2937;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.payment-summary-item p {
+    margin: 6px 0;
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+.payment-summary-item .payment-installments {
+    color: #0073aa;
+    font-weight: 700;
+    font-size: 15px;
+    margin-top: 12px;
+    padding: 8px 12px;
+    background: #eff6ff;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+/* ============================================
+   INFO PIX E BOLETO
+   ============================================ */
+
+.pix-info,
+.boleto-info {
+    text-align: center;
+    padding: 32px 24px;
+}
+
+.pix-info p,
+.boleto-info p {
+    font-size: 15px;
+    color: #4b5563;
+    margin-bottom: 12px;
+    line-height: 1.7;
+}
+
+.pix-info .discount-info,
+.boleto-info .discount-info {
+    font-size: 16px;
+    margin-top: 20px;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+/* ============================================
+   RESPONSIVIDADE
+   ============================================ */
+
+@media (max-width: 768px) {
+    #card-brand-display {
+        padding: 10px 12px;
+    }
+    
+    #card-brand-display .brand-icon {
+        width: 40px;
+        height: 26px;
+    }
+    
+    #card-brand-display .brand-name {
+        font-size: 13px;
+    }
+    
+    #document-type-toggle {
+        display: block;
+        margin-left: 0;
+        margin-top: 8px;
+    }
+    
+    .payment-summary-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 16px;
+    }
+    
+    .payment-summary-item .payment-icon {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 480px) {
+    #card-brand-display .brand-icon {
+        width: 35px;
+        height: 22px;
+    }
+    
+    .payment-method-option {
+        margin-bottom: 10px;
+    }
+    
+    .payment-method-label {
+        padding: 14px 16px;
+    }
+    
+    .payment-icon {
+        font-size: 26px;
+        width: 42px;
+        height: 42px;
+    }
+}
+
+/* CORREÇÃO FINAL: Tornar radio acessível mas invisível */
+.pagarme-payment-methods .payment-method-option input[type="radio"] {
+    position: absolute !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    padding: 0 !important;
+    border: 0 !important;
+    height: 1px !important;
+    width: 1px !important;
+    overflow: hidden !important;
+}
+
+/* Container totalmente clicável */
+.pagarme-payment-methods .payment-method-option {
+    cursor: pointer !important;
+}
+
+.pagarme-payment-methods .payment-method-label {
+    cursor: pointer !important;
+    pointer-events: auto !important;
+}
+
+/* Garantir que todos elementos sejam clicáveis */
+.pagarme-payment-methods .payment-method-label * {
+    pointer-events: auto !important;
+}
