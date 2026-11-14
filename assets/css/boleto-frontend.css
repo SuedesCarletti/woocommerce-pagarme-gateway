@@ -216,7 +216,7 @@ a.woocommerce-button.button.view-boleto:after {
 }
 
 .pagarme-boleto-barcode .copy-button.copied:before {
-    content: "✅";
+    content: "";
 }
 
 /* ============================================
@@ -344,7 +344,7 @@ a.woocommerce-button.button.view-boleto:after {
 }
 
 .pagarme-boleto-alert.success:before {
-    content: "✅";
+    content: "";
 }
 
 /* ============================================

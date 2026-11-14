@@ -146,7 +146,7 @@ class Boleto_Frontend_Display {
                 
                 // Feedback visual
                 var originalText = button.textContent;
-                button.textContent = '✅ Copiado!';
+                button.textContent = 'Copiado!';
                 button.style.background = '#28a745';
                 
                 setTimeout(function() {

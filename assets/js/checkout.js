@@ -476,7 +476,7 @@ function injectMultipaymentFieldsRobust() {
             //     this.initMultistepCompat();
             // }
             
-            this.log('✅ Inicializado');
+            this.log('Inicializado');
             
             // Expor globalmente para o multistep acessar
             window.PagarMeGatewayCheckout = this;
@@ -557,7 +557,7 @@ function injectMultipaymentFieldsRobust() {
             // Verificar se já existem campos
             const $existing = $('input[name="pagarme_payment_type"]');
             if ($existing.length > 0) {
-                this.log('✅ Campos já existem');
+                this.log('Campos já existem');
                 this.isRendering = false;
                 return;
             }
@@ -568,7 +568,7 @@ function injectMultipaymentFieldsRobust() {
             $paymentBox.html(html);
             
             this.fieldsRendered = true;
-            this.log('✅ Campos renderizados');
+            this.log('Campos renderizados');
             
             // Selecionar primeiro método
             setTimeout(() => {
@@ -775,11 +775,11 @@ function injectMultipaymentFieldsRobust() {
             // Remover campos de cartão
             $('.multipay-card-fields').remove();
             
-            this.log('✅ Dados de multipagamento limpos');
+            this.log('Dados de multipagamento limpos');
         },
                 
         /**
-         * NOVO: Toggle de método no multipagamento com validação UX
+         * Toggle de método no multipagamento com validação UX
          */
         handleMultipayMethodToggle: function(method, isChecked) {
             const $methodDiv = $(`.multipay-method[data-method="${method}"]`);
@@ -819,7 +819,7 @@ function injectMultipaymentFieldsRobust() {
                     this.showMultipayCardFields(method);
                 }
                 
-                // NOVO: Atualizar disponibilidade dos outros métodos
+  // Atualizar disponibilidade dos outros métodos
                 this.updateMethodsAvailability();
                 
             } else {
@@ -833,7 +833,7 @@ function injectMultipaymentFieldsRobust() {
                     this.hideMultipayCardFields(method);
                 }
                 
-                // NOVO: Atualizar disponibilidade dos outros métodos
+  // Atualizar disponibilidade dos outros métodos
                 this.updateMethodsAvailability();
             }
             
@@ -1327,7 +1327,7 @@ function injectMultipaymentFieldsRobust() {
         },
         
         /**
-         * NOVO: Calcular distribuição com auto-completar
+         * Calcular distribuição com auto-completar
          */
         calculateMultipaymentDistribution: function() {
             // pega os métodos que realmente estão marcados
@@ -1506,7 +1506,7 @@ function injectMultipaymentFieldsRobust() {
             
             // Armazenar dados validados
             this.multipaymentData = selectedMethods;
-            this.log('✅ Multipagamento válido:', this.multipaymentData);
+            this.log('Multipagamento válido:', this.multipaymentData);
             
             return true;
         },
@@ -1646,7 +1646,7 @@ function injectMultipaymentFieldsRobust() {
             const labels = {
                 'credit_card': '💳 Cartão de Crédito',
                 'debit_card': '💳 Cartão de Débito',
-                'pix': '⚡ PIX',
+                'pix': 'PIX',
                 'boleto': '📄 Boleto Bancário',
                 'voucher': '🎫 Voucher',
                 'cash': '💵 Dinheiro',
@@ -1746,7 +1746,7 @@ function injectMultipaymentFieldsRobust() {
         getPixInfoHTML: function() {
             return `
                 <div id="pix-info" style="display:none; padding: 15px; background: #e7f3ff; border-radius: 8px; margin-top: 15px;">
-                    <p style="margin: 5px 0;"><strong>✅ Pagamento instantâneo via PIX</strong></p>
+                    <p style="margin: 5px 0;"><strong>Pagamento instantneo via PIX</strong></p>
                     <p style="margin: 5px 0;">📱 O QR Code será gerado após a confirmação do pedido</p>
                 </div>
             `;
@@ -1778,7 +1778,7 @@ function injectMultipaymentFieldsRobust() {
                 // O 'change' está hookado em outros scripts para VALIDAÇÃO/INJEÇÃO, que deve ser adiada.
                 this.handlePaymentMethodChange($firstRadio.val());
                 
-                this.log('✅ Método selecionado por padrão:', $firstRadio.val());
+                this.log('Método selecionado por padrão:', $firstRadio.val());
             }
         },
         
@@ -1991,7 +1991,7 @@ function injectMultipaymentFieldsRobust() {
             
             // Se não for método de cartão, não precisa injetar campos
             if (!self.isCardMethod(selectedMethod)) {
-                self.log('✅ Método não requer campos de cartão');
+                self.log('Método não requer campos de cartão');
                 return true; // Retornar true para não travar o processo
             }
             
@@ -2082,7 +2082,7 @@ function injectMultipaymentFieldsRobust() {
             }
             
             // Log de sucesso com resumo dos dados
-            self.log('✅ Campos hidden injetados com sucesso!');
+            self.log('Campos hidden injetados com sucesso!');
             
             // Contar quantos campos críticos foram injetados (para fins de debug)
             const injected_count_check = $form.find('input[name="pagarme_card_number_raw"]').length;
@@ -2121,7 +2121,7 @@ function injectMultipaymentFieldsRobust() {
                 }
             }
             
-            self.log('✅ Todos os campos validados com sucesso');
+            self.log('Todos os campos validados com sucesso');
             return true;
         },
 
@@ -2163,7 +2163,7 @@ function injectMultipaymentFieldsRobust() {
                 }
                 
                 // Permitir continuação
-                self.log('✅ Validação concluída, prosseguindo com checkout');
+                self.log('Validação concluída, prosseguindo com checkout');
                 return true;
             });
         },

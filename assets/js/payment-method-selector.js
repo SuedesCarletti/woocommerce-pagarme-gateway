@@ -1,5 +1,5 @@
 /**
- * PAYMENT METHOD SELECTOR - Solução Simples v1.1 (CORRIGIDO) 
+ * PAYMENT METHOD SELECTOR - Solução Simples v1.1 
  * 
  * Correções:
  * 1. Removeu a função `expandPaymentFields` (Conflitante).

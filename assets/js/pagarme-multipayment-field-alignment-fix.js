@@ -103,7 +103,7 @@
                                     class="pagarme-multipay-hidden" />`);
                                 totalInjected++;
 
-                                log(`✅ Método ${methodIndex} (${method}): R$ ${amount.toFixed(2)}`);
+                                log(`Método ${methodIndex} (${method}): R$ ${amount.toFixed(2)}`);
 
                                 // Se for método com cartão, adicionar dados do cartão
                                 if (['credit_card', 'debit_card', 'voucher'].includes(method)) {
@@ -170,7 +170,7 @@
                                             totalInjected++;
                                         }
 
-                                        log(`✅ Dados do cartão para método ${methodIndex} injetados`);
+                                        log(`Dados do cartão para método ${methodIndex} injetados`);
                                     }
                                 }
 
@@ -186,8 +186,8 @@
                             class="pagarme-multipay-hidden" />`);
                         totalInjected++;
 
-                        log(`✅ Total injetado: ${totalInjected} campos`);
-                        log(`✅ Total de métodos: ${methodIndex}`);
+                        log(`Total injetado: ${totalInjected} campos`);
+                        log(`Total de métodos: ${methodIndex}`);
                         
                         return methodIndex > 0;
 
@@ -197,7 +197,7 @@
                     }
                 };
                 
-                log('✅ Função de injeção sobrescrita com nomenclatura correta');
+                log('Função de injeção sobrescrita com nomenclatura correta');
             }
 
             // Também criar uma versão alternativa caso seja necessária
@@ -233,7 +233,7 @@
             expectedFields.forEach(fieldName => {
                 const $field = $(`input[name="${fieldName}"]`);
                 if ($field.length) {
-                    log(`✅ Campo ${fieldName}: ${$field.val()}`);
+                    log(`Campo ${fieldName}: ${$field.val()}`);
                 } else {
                     log(`❌ Campo ${fieldName}: NÃO ENCONTRADO`);
                 }

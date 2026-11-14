@@ -329,7 +329,7 @@ pagarme-woocommerce-gateway/
 ├── pagarme-gateway.php              # Arquivo principal
 ├── includes/
 │   ├── class-pagarme-gateway.php    # Gateway principal
-│   ├── class-webhook-handler.php    # Processamento webhooks
+│   ├── webhook-handler-fixed.php    # Processamento webhooks
 │   ├── class-rest-api.php          # API REST
 │   ├── class-data-formatter.php    # Formatação de dados
 │   └── class-logger.php            # Sistema de logs

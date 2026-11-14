@@ -306,7 +306,7 @@ class Admin_Settings {
                     },
                     success: function(response) {
                         if (response.success) {
-                            $result.addClass('success').html('✅ ' + response.data.message).fadeIn();
+                            $result.addClass('success').html('' + response.data.message).fadeIn();
                         } else {
                             $result.addClass('error').html('❌ ' + response.data.message).fadeIn();
                         }
@@ -352,7 +352,7 @@ class Admin_Settings {
                                 <option value="">Selecione...</option>
                                 <option value="credit_card">💳 Cartão de Crédito</option>
                                 <option value="boleto">📄 Boleto Bancário</option>
-                                <option value="pix">⚡ PIX</option>
+                                <option value="pix">PIX</option>
                             </select>
                         </td>
                     </tr>
@@ -416,7 +416,7 @@ class Admin_Settings {
                                     $icons = array(
                                         'credit_card' => '💳 Cartão de Crédito',
                                         'boleto' => '📄 Boleto',
-                                        'pix' => '⚡ PIX'
+                                        'pix' => 'PIX'
                                     );
                                     echo $icons[$mapping['payment_method']] ?? $mapping['payment_method'];
                                     ?>
@@ -564,7 +564,7 @@ class Admin_Settings {
     }
     
     /**
-     * AJAX: TESTAR CONEXÃO (CORRIGIDO)
+     * AJAX: TESTAR CONEXÃO
      */
     public function test_pagarme_connection() {
         check_ajax_referer('pagarme_admin_nonce', 'nonce');

@@ -65,7 +65,7 @@
         
         redirecting = true;
         
-        log('✅ Forçando redirect para:', redirectUrl);
+        log('Forçando redirect para:', redirectUrl);
         
         // Remover overlay de loading se existir
         $('.woocommerce-checkout').unblock();
@@ -118,7 +118,7 @@
             
             // Verificar se houve sucesso
             if (response.result === 'success' && response.redirect) {
-                log('✅ Sucesso detectado! Redirect URL:', response.redirect);
+                log('Sucesso detectado! Redirect URL:', response.redirect);
                 
                 // Verificar se tem boleto
                 const withBoleto = hasBoletoSelected();
@@ -202,6 +202,6 @@
         checkoutStartTime = null;
     });
     
-    log('✅ Interceptador instalado com sucesso');
+    log('Interceptador instalado com sucesso');
     
 })(jQuery);

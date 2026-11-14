@@ -10,6 +10,10 @@
 
 namespace PagarMeGateway;
 
+if (!defined("ABSPATH")) {
+    exit;
+}
+
 use WC_Order;
 use WC_Logger;
 

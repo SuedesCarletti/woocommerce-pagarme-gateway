@@ -57,11 +57,11 @@ class Webhook_Diagnostic_Tool {
         
         // Verificar WooCommerce API endpoint
         $wc_endpoint = home_url('/wc-api/pagarme_webhook');
-        $this->success[] = "✅ Endpoint WooCommerce registrado: <code>$wc_endpoint</code>";
+        $this->success[] = "Endpoint WooCommerce registrado: <code>$wc_endpoint</code>";
         
         // Verificar REST API endpoint
         $rest_endpoint = rest_url('pagarme/v1/webhook');
-        $this->success[] = "✅ Endpoint REST API registrado: <code>$rest_endpoint</code>";
+        $this->success[] = "Endpoint REST API registrado: <code>$rest_endpoint</code>";
         
         // Verificar se as regras de rewrite estão ativas
         if (empty($wp_rewrite->rules)) {
@@ -95,7 +95,7 @@ class Webhook_Diagnostic_Tool {
                 $this->errors[] = "❌ Erro 500 detectado. Erro interno no processamento.";
                 $this->add_500_fix();
             } elseif ($status === 200 || $status === 400) {
-                $this->success[] = "✅ Endpoint acessível (Status: $status)";
+                $this->success[] = "Endpoint acessível (Status: $status)";
             }
         }
     }
@@ -116,7 +116,7 @@ class Webhook_Diagnostic_Tool {
         if ($gateway->enabled !== 'yes') {
             $this->warnings[] = "Gateway Pagar.me está desativado";
         } else {
-            $this->success[] = "✅ Gateway Pagar.me está ativo";
+            $this->success[] = "Gateway Pagar.me está ativo";
         }
         
         // Verificar API Key
@@ -124,7 +124,7 @@ class Webhook_Diagnostic_Tool {
         if (empty($api_key)) {
             $this->errors[] = "❌ API Key não configurada";
         } else {
-            $this->success[] = "✅ API Key configurada";
+            $this->success[] = "API Key configurada";
         }
     }
     
@@ -157,7 +157,7 @@ class Webhook_Diagnostic_Tool {
         } else {
             $status = wp_remote_retrieve_response_code($response);
             if ($status === 200) {
-                $this->success[] = "✅ Conexão com Pagar.me funcionando";
+                $this->success[] = "Conexão com Pagar.me funcionando";
             } else {
                 $this->errors[] = "❌ Erro na API Pagar.me (Status: $status)";
             }
@@ -402,12 +402,18 @@ add_action('admin_menu', function() {
 // Handlers AJAX
 add_action('wp_ajax_pagarme_flush_rewrite', function() {
     check_ajax_referer('pagarme_admin', 'nonce');
+    if (!current_user_can('manage_woocommerce')) {
+        wp_send_json_error(array('message' => 'Sem permissão.'), 403);
+    }
     flush_rewrite_rules();
     wp_send_json_success();
 });
 
 add_action('wp_ajax_pagarme_test_webhook', function() {
     check_ajax_referer('pagarme_admin', 'nonce');
+    if (!current_user_can('manage_woocommerce')) {
+        wp_send_json_error(array('message' => 'Sem permissão.'), 403);
+    }
     
     $test_data = array(
         'id' => 'hook_test_' . time(),
@@ -431,6 +437,9 @@ add_action('wp_ajax_pagarme_test_webhook', function() {
 
 add_action('wp_ajax_pagarme_clear_logs', function() {
     check_ajax_referer('pagarme_admin', 'nonce');
+    if (!current_user_can('manage_woocommerce')) {
+        wp_send_json_error(array('message' => 'Sem permissão.'), 403);
+    }
     
     global $wpdb;
     $table = $wpdb->prefix . 'pagarme_gateway_logs';
@@ -441,6 +450,9 @@ add_action('wp_ajax_pagarme_clear_logs', function() {
 
 add_action('wp_ajax_pagarme_apply_fix', function() {
     check_ajax_referer('pagarme_admin', 'nonce');
+    if (!current_user_can('manage_woocommerce')) {
+        wp_send_json_error(array('message' => 'Sem permissão.'), 403);
+    }
     
     // Aplicar correções automáticas
     flush_rewrite_rules();

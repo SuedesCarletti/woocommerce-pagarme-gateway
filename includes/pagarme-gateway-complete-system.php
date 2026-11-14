@@ -102,7 +102,7 @@ class PagarMe_Gateway_Complete extends \WC_Payment_Gateway {
         // CRÍTICO: PRIORIDADE 20 para carregar DEPOIS do Multistep
         add_action('wp_enqueue_scripts', array($this, 'payment_scripts'), 20);
 
-        // NOVO: Carregar funcionalidade de segunda via do boleto
+  // Carregar funcionalidade de segunda via do boleto
         if (file_exists(PAGARME_GATEWAY_PATH . 'includes/class-boleto-frontend-display.php')) {
             require_once PAGARME_GATEWAY_PATH . 'includes/class-boleto-frontend-display.php';
         }
@@ -235,7 +235,7 @@ class PagarMe_Gateway_Complete extends \WC_Payment_Gateway {
                 'days_to_expire' => intval($this->get_option('boleto_days_to_expire', 3))
             ),
             
-            // NOVO: TOTAL DO PEDIDO
+  // TOTAL DO PEDIDO
             'order_total' => WC()->cart ? WC()->cart->get_total('raw') : 0,
             
             // Traduções
@@ -249,7 +249,7 @@ class PagarMe_Gateway_Complete extends \WC_Payment_Gateway {
             )
         ));
         
-        // NOVO: PASSAR CONFIGURAÇÕES PARA O VALIDADOR
+  // PASSAR CONFIGURAÇÕES PARA O VALIDADOR
         wp_localize_script('pagarme-checkout-validator', 'pagarme_validator_params', array(
             'order_total' => WC()->cart ? WC()->cart->get_total('raw') : 0,
             'debug_mode' => defined('WP_DEBUG') && WP_DEBUG,
@@ -268,7 +268,7 @@ class PagarMe_Gateway_Complete extends \WC_Payment_Gateway {
             );
         }
         
-        // NOVO: ESTILOS CSS INLINE PARA VALIDAÇÕES
+  // ESTILOS CSS INLINE PARA VALIDAÇÕES
         $this->add_validator_inline_styles();
     }
 
@@ -592,7 +592,7 @@ class PagarMe_Gateway_Complete extends \WC_Payment_Gateway {
                 'description' => 'Valor mínimo do pedido para habilitar multipagamento'
             ),
             'multipayment_max_methods' => array(
-                'title' => 'Máximo de Métodos Simultâneos',
+                'title' => 'Máximo de Métodos Simultneos',
                 'type' => 'number',
                 'default' => '2',
                 'custom_attributes' => array('min' => '2', 'max' => '3')
@@ -695,7 +695,7 @@ class PagarMe_Gateway_Complete extends \WC_Payment_Gateway {
         if ($this->get_option('enable_pix') === 'yes') {
             $methods['pix'] = array(
                 'title' => 'PIX',
-                'icon' => '⚡',
+                'icon' => '',
                 'discount' => $this->get_option('pix_discount', 0),
                 'expiration' => $this->get_option('pix_expiration', 30)
             );
@@ -910,7 +910,7 @@ class PagarMe_Gateway_Complete extends \WC_Payment_Gateway {
             $order->update_meta_data('_pagarme_order_id', $response['order_id']);
             $order->update_meta_data('_pagarme_payment_method', $payment_method);
             
-            // NOVO: Processar dados do Boleto/PIX se existirem (para pagamento único)
+  // Processar dados do Boleto/PIX se existirem (para pagamento único)
             if ($payment_method === 'boleto' || $payment_method === 'pix') {
                 $this->handle_boleto_pix_response($order, $response);
             }
@@ -1084,7 +1084,7 @@ class PagarMe_Gateway_Complete extends \WC_Payment_Gateway {
     }
 
     /**
-    * NOVO MÉTODO: Lidar com a resposta da API Pagar.me para Boleto/PIX (Single Payment)
+    * Lidar com a resposta da API Pagar.me para Boleto/PIX (Single Payment)
     */
     private function handle_boleto_pix_response($order, $response) {
         $charge = $response['charges'][0] ?? null;
@@ -1132,6 +1132,8 @@ class PagarMe_Gateway_Complete extends \WC_Payment_Gateway {
             $order->update_meta_data('_pagarme_boleto_pdf', $boleto_pdf);
             $order->update_meta_data('_pagarme_boleto_line', $boleto_line);
             $order->update_meta_data('_pagarme_boleto_barcode', $boleto_barcode);
+            $days_to_pay = (int) $this->get_option('boleto_days_to_pay', 3);
+            $due_date = date('Y-m-d', strtotime('+' . $days_to_pay . ' days'));
             $order->update_meta_data('_pagarme_boleto_due_date', $due_date);
             
             // CRÍTICO: Salvar as alterações no banco de dados
@@ -1176,7 +1178,7 @@ class PagarMe_Gateway_Complete extends \WC_Payment_Gateway {
     }
     
     /**
-     * NOVO MÉTODO: Lidar com a resposta da API Pagar.me para Boleto/PIX (Multipayment)
+     * Lidar com a resposta da API Pagar.me para Boleto/PIX (Multipayment)
      * Salva links se encontrados em qualquer uma das charges.
      */
     private function handle_multipayment_pix_boleto_links($order, $charges) {
@@ -1442,7 +1444,7 @@ class PagarMe_Gateway_Complete extends \WC_Payment_Gateway {
                     <?php endif; ?>
                     
                     <p style="color: #059669; margin-top: 20px; font-weight: 600; font-size: 15px;">
-                        ✅ Pagamento instantâneo. A confirmação ocorre em segundos!
+                        Pagamento instantneo. A confirmação ocorre em segundos!
                     </p>
                 </div>
             </div>
@@ -1459,7 +1461,7 @@ class PagarMe_Gateway_Complete extends \WC_Payment_Gateway {
     }
 
     /**
-     * NOVO MÉTODO: Preparar apenas objeto de pagamento individual
+     * Preparar apenas objeto de pagamento individual
      * Este método retorna SOMENTE os dados do payment, sem customer e items
      * Usado para construir o array payments[] no multipagamento
      * 
@@ -1515,7 +1517,7 @@ class PagarMe_Gateway_Complete extends \WC_Payment_Gateway {
 
 
     /**
-     * NOVO MÉTODO: Criar pedido com multipagamento
+     * Criar pedido com multipagamento
      * Monta estrutura correta conforme documentação Pagar.me
      * Endpoint: POST /core/v5/orders
      * 
@@ -2060,7 +2062,7 @@ private function prepare_safetypay_data($order) {
             return true;
         }
         
-        // NOVO: Detectar se é multipagamento
+  // Detectar se é multipagamento
         $is_multipayment = isset($_POST['pagarme_multipayment']) || isset($_POST['is_multipayment']);
         $method_prefix = $is_multipayment ? 'multi_card_' . $payment_method . '_' : '';
         
@@ -2070,7 +2072,7 @@ private function prepare_safetypay_data($order) {
             'method' => $payment_method
         ));
         
-        // NOVO: Lista de possíveis nomes de campos INCLUINDO multipagamento
+  // Lista de possíveis nomes de campos INCLUINDO multipagamento
         $field_variants = array(
             'number' => array(
                 // Multipagamento
@@ -2425,7 +2427,9 @@ class PagarMe_API_Endpoints {
         register_rest_route($namespace, '/antifraud-settings', array(
             'methods' => 'GET',
             'callback' => array($this, 'get_antifraud_settings'),
-            'permission_callback' => '__return_true'
+            'permission_callback' => function () {
+                return current_user_can('manage_woocommerce');
+            }
         ));
         
         // Calcular parcelas

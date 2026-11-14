@@ -95,7 +95,7 @@
                     if (stored) {
                         const data = JSON.parse(stored);
                         if (data && data.methods && data.methods.length > 0) {
-                            log(`✅ Recuperou ${data.methods.length} métodos de ${key}`);
+                            log(`Recuperou ${data.methods.length} métodos de ${key}`);
                             return data;
                         }
                     }
@@ -164,7 +164,7 @@
                 $form.append(`<input type="hidden" name="pagarme_multipayment_methods[]" value="${method}" class="pagarme-multipay-v5" />`);
                 $form.append(`<input type="hidden" name="pagarme_multipayment_amounts[${method}]" value="${amount.toFixed(2)}" class="pagarme-multipay-v5" />`);
 
-                        log(`  ✅ ${method}: R$ ${amount.toFixed(2)}`);
+                        log(`  ${method}: R$ ${amount.toFixed(2)}`);
 
                         if (methodData.card) {
                             const card = methodData.card;
@@ -197,7 +197,7 @@
                 });
 
                 const total = $form.find('.pagarme-multipay-v5').length;
-                log(`✅ Total: ${total} campos (${methodsCount} métodos)`);
+                log(`Total: ${total} campos (${methodsCount} métodos)`);
 
                 return methodsCount > 0;
 
@@ -370,7 +370,7 @@
             this.setupInjectionListeners();
             this.setupTestFunction();
             
-            log('✅ Proteção instalada');
+            log('Proteção instalada');
         }
     };
 

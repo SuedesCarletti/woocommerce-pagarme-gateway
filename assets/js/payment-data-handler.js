@@ -78,10 +78,10 @@
                 sessionStorage.setItem(this.storageKey, JSON.stringify(data));
                 console.log('Dados salvos:', {
                     method: data.payment_method,
-                    holder: data.card_holder_name ? '✅' : '❌',
-                    number: data.has_card_number ? '✅' : '❌',
-                    expiry: data.card_expiry ? '✅' : '❌',
-                    cvc: data.has_cvc ? '✅' : '❌'
+                    holder: data.card_holder_name ? '' : '❌',
+                    number: data.has_card_number ? '' : '❌',
+                    expiry: data.card_expiry ? '' : '❌',
+                    cvc: data.has_cvc ? '' : '❌'
                 });
             } catch (e) {
                 console.error('Erro ao salvar dados:', e);

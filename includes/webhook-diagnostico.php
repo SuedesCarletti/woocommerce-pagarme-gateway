@@ -3,7 +3,7 @@
  * Plugin Name: Diagnóstico Webhook Pagar.me
  * Description: Diagnóstico completo do webhook - Acesse via Admin
  * Version: 1.0
- * Author: Debug Tool
+ * Author: Suedes Carletti
  */
 
 // Prevenir acesso direto
@@ -101,7 +101,6 @@ function webhook_diagnostico_page() {
         // Verificar arquivos
         $files = array(
             'includes/class-logger.php',
-            'includes/class-webhook-handler.php',
             'includes/pagarme-gateway-complete-system.php'
         );
         
@@ -308,8 +307,8 @@ define(\'WP_DEBUG_DISPLAY\', false);</pre></div>';
         if (isset($results['class_Webhook Handler']) && !$results['class_Webhook Handler']) {
             echo '<div style="background: #dc3232; color: white; padding: 15px; margin: 10px 0;">';
             echo '<h3>Classe Webhook Handler Não Encontrada</h3>';
-            echo '<p>Substitua o arquivo: <code>includes/class-webhook-handler.php</code></p>';
-            echo '<p>Use o arquivo corrigido fornecido.</p>';
+            echo '<p>Substitua o arquivo: <code>includes/webhook-handler-fixed.php</code></p>';
+            echo '<p>Reinstale o plugin a partir do repositório.</p>';
             echo '</div>';
         }
         
